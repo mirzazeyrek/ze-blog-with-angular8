@@ -39,15 +39,19 @@
     },
     "require": {
         "php": "^7.1",
+        "dasprid/container-interop-doctrine": "^1.1",
         "zendframework/zend-component-installer": "^2.1.1",
         "zendframework/zend-config-aggregator": "^1.0",
+        "zendframework/zend-db": "^2.10",
         "zendframework/zend-diactoros": "^1.7.1 || ^2.0",
         "zendframework/zend-expressive": "^3.0.1",
         "zendframework/zend-expressive-helpers": "^5.0",
-        "zendframework/zend-stdlib": "^3.1",
-        "zendframework/zend-servicemanager": "^3.3",
         "zendframework/zend-expressive-zendrouter": "^3.0",
-        "zendframework/zend-expressive-zendviewrenderer": "^2.0"
+        "zendframework/zend-expressive-zendviewrenderer": "^2.0",
+        "zendframework/zend-hydrator": "^3.0",
+        "zendframework/zend-inputfilter": "^2.10",
+        "zendframework/zend-servicemanager": "^3.3",
+        "zendframework/zend-stdlib": "^3.1"
     },
     "require-dev": {
         "filp/whoops": "^2.1.12",
@@ -59,12 +63,14 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/App/src/"
+            "App\\": "src/App/src/",
+            "Blog\\": "src/Blog/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AppTest\\": "test/AppTest/"
+            "AppTest\\": "test/AppTest/",
+            "PostTest\\": "test/PostTest/"
         }
     },
     "scripts": {

@@ -1,0 +1,82 @@
+{
+    "version": "@project.version@",
+    "package": "phpmd",
+    "timestamp": "2019-10-22T08:23:58+00:00",
+    "files": [
+        {
+            "file": "C:\\check24\\trialtask\\blog\\src\\App\\src\\Handler\\HomePageHandler.php",
+            "violations": [
+                {
+                    "beginLine": 18,
+                    "endLine": 102,
+                    "package": "App\\Handler",
+                    "function": null,
+                    "class": "HomePageHandler",
+                    "method": null,
+                    "description": "The class HomePageHandler has a coupling between objects value of 13. Consider to reduce the number of dependencies under 13.",
+                    "rule": "CouplingBetweenObjects",
+                    "ruleSet": "Design Rules",
+                    "externalInfoUrl": "https:\/\/phpmd.org\/rules\/design.html#couplingbetweenobjects",
+                    "priority": 2
+                },
+                {
+                    "beginLine": 39,
+                    "endLine": 101,
+                    "package": "App\\Handler",
+                    "function": null,
+                    "class": "HomePageHandler",
+                    "method": "handle",
+                    "description": "The method handle() has a Cyclomatic Complexity of 15. The configured cyclomatic complexity threshold is 10.",
+                    "rule": "CyclomaticComplexity",
+                    "ruleSet": "Code Size Rules",
+                    "externalInfoUrl": "https:\/\/phpmd.org\/rules\/codesize.html#cyclomaticcomplexity",
+                    "priority": 3
+                },
+                {
+                    "beginLine": 39,
+                    "endLine": 101,
+                    "package": "App\\Handler",
+                    "function": null,
+                    "class": "HomePageHandler",
+                    "method": "handle",
+                    "description": "The method handle() has an NPath complexity of 224. The configured NPath complexity threshold is 200.",
+                    "rule": "NPathComplexity",
+                    "ruleSet": "Code Size Rules",
+                    "externalInfoUrl": "https:\/\/phpmd.org\/rules\/codesize.html#npathcomplexity",
+                    "priority": 3
+                },
+                {
+                    "beginLine": 39,
+                    "endLine": 39,
+                    "package": null,
+                    "function": null,
+                    "class": null,
+                    "method": null,
+                    "description": "Avoid unused parameters such as \u0027$request\u0027.",
+                    "rule": "UnusedFormalParameter",
+                    "ruleSet": "Unused Code Rules",
+                    "externalInfoUrl": "https:\/\/phpmd.org\/rules\/unusedcode.html#unusedformalparameter",
+                    "priority": 3
+                }
+            ]
+        },
+        {
+            "file": "C:\\check24\\trialtask\\blog\\src\\App\\src\\Handler\\PingHandler.php",
+            "violations": [
+                {
+                    "beginLine": 16,
+                    "endLine": 16,
+                    "package": null,
+                    "function": null,
+                    "class": null,
+                    "method": null,
+                    "description": "Avoid unused parameters such as \u0027$request\u0027.",
+                    "rule": "UnusedFormalParameter",
+                    "ruleSet": "Unused Code Rules",
+                    "externalInfoUrl": "https:\/\/phpmd.org\/rules\/unusedcode.html#unusedformalparameter",
+                    "priority": 3
+                }
+            ]
+        }
+    ]
+}

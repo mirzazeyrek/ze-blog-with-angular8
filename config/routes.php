@@ -32,7 +32,22 @@ use Zend\Expressive\MiddlewareFactory;
  *     'contact'
  * );
  */
-return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container) : void {
+
+return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     $app->get('/', App\Handler\HomePageHandler::class, 'home');
     $app->get('/api/ping', App\Handler\PingHandler::class, 'api.ping');
+
+    // Hello
+    $app->get('/post', App\Handler\HelloHandler::class, 'hello');
+
+    // src post
+    $app->get('/post/list', Blog\Handler\PostListHandler::class, 'post.list');
+    $app->get('/post/detail', Blog\Handler\PostDetailHandler::class, 'post.detail');
+    $app->route('/post/create', Blog\Handler\PostCreateHandler::class, ['GET', 'POST'], 'post.create');
+    $app->route('/post/update', Blog\Handler\PostUpdateHandler::class, ['GET', 'POST'], 'post.update');
+    $app->route('/post/delete', Blog\Handler\PostDeleteHandler::class, ['GET', 'POST'], 'post.delete');
+
+    // src API
+    $app->get('/api/post/list', Blog\Handler\ApiPostListHandler::class, 'api.post.list');
+    $app->delete('/api/post/delete/:id', Blog\Handler\ApiPostDeleteHandler::class, 'api.post.delete');
 };
