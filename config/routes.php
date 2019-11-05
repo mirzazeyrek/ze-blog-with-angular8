@@ -48,6 +48,8 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     $app->route('/post/delete', Blog\Handler\PostDeleteHandler::class, ['GET', 'POST'], 'post.delete');
 
     // src API
-    $app->get('/api/post/list', Blog\Handler\ApiPostListHandler::class, 'api.post.list');
+    $app->get('/api/post/list/[:searchTerm]', Blog\Handler\ApiPostListHandler::class, 'api.post.list');
     $app->delete('/api/post/delete/:id', Blog\Handler\ApiPostDeleteHandler::class, 'api.post.delete');
+    $app->get('/api/post/detail/:id', Blog\Handler\ApiPostDetailHandler::class, 'api.post.detail');
+    $app->route('/api/post/create', Blog\Handler\ApiPostCreateHandler::class, ['GET', 'POST'], 'api.post.create');
 };

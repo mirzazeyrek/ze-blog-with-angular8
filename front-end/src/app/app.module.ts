@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { registerLocaleData } from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -14,7 +13,9 @@ import { CartComponent } from './cart/cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
-
+import { PostComponent } from './post/post.component';
+import { PostFormComponent } from './post-form/post-form.component';
+import { PostService } from './post.service';
 
 @NgModule({
   imports: [
@@ -22,14 +23,19 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: 'products/:productId', component: ProductDetailsComponent },
-      { path: 'cart', component: CartComponent },
-      { path: 'shipping', component: ShippingComponent},
+      {path: 'products/:productId', component: ProductDetailsComponent},
+      {path: 'cart', component: CartComponent},
+      {path: 'shipping', component: ShippingComponent},
       // Home page with post lists.
-      { path: '', component: PostListComponent },
+      {path: '', component: PostListComponent},
+      // Post edit page.
+      {path: 'post/edit/:postId', component: PostFormComponent},
+      // Post create page.
+      {path: 'post/create', component: PostFormComponent},
       // Post detail page.
-      { path: 'post/:postId', component: PostDetailsComponent },
-    ])
+      {path: 'post/:postId', component: PostDetailsComponent},
+    ]),
+    FormsModule
   ],
   declarations: [
     AppComponent,
@@ -40,10 +46,15 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     CartComponent,
     ShippingComponent,
     PostListComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    PostComponent,
+    PostFormComponent,
   ],
   bootstrap: [ AppComponent ],
-  providers: [CartService]
+  providers: [
+    CartService,
+    PostService
+  ]
 })
 export class AppModule { }
 

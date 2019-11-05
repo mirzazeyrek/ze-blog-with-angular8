@@ -57,6 +57,8 @@ class ConfigProvider
                 // Api
                 Handler\ApiPostListHandler::class => Factory\ApiPostListHandlerFactory::class,
                 Handler\ApiPostDeleteHandler::class => Factory\ApiPostDeleteHandlerFactory::class,
+                Handler\ApiPostDetailHandler::class => Factory\ApiPostDetailHandlerFactory::class,
+                Handler\ApiPostCreateHandler::class => Factory\ApiPostCreateHandlerFactory::class,
                 // Default Html
                 Handler\PostCreateHandler::class  => Factory\PostCreateHandlerFactory::class,
                 Handler\PostDeleteHandler::class  => Factory\PostDeleteHandlerFactory::class,

@@ -23,6 +23,7 @@
   "scripts": {
     "serve": "ng serve --proxyConfig=./proxy.conf.json",
     "ng": "ng",
+    "watch": "ng build --watch",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",

@@ -555,7 +555,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/vagrant/blog/front-end/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\check24\trialtask\blog\front-end\src\styles.css */"./src/styles.css");
 
 
 /***/ })

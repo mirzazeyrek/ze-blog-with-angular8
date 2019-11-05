@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-bar',
@@ -6,12 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
+  searchValue: any;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private postService: PostService
+  ) {}
 
   ngOnInit() {
   }
 
+  search(searchValue: any) {
+    this.postService.getPosts(searchValue);
+  }
 }
 
 

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from '../../post';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-list',
@@ -11,26 +11,32 @@ export class PostListComponent implements OnInit {
   response;
   posts = [];
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private postService: PostService
   ) { }
 
   ngOnInit() {
-    this.response = this.getResponse();
+    this.getResponse();
+    this.response = this.postService.posts;
   }
 
-  getResponse() {
-    return this.http.get<Post[]>('/api/post/list');
-  }
-
-  edit(post) {
-    window.alert('The post will be edited!');
+  getResponse(search = '') {
+    this.postService.getPosts(search);
+    /*return this.http.get<Post[]>('/api/post/list/' + search)
+      .subscribe(
+      data => {
+        this.response = data;
+        console.log(data);
+      }
+    );*/
   }
 
   delete(post, index) {
-   this.http.delete('/api/post/delete/' + post.id)
+   this.http.delete<void>('/api/post/delete/' + post.id)
       .subscribe(
         data  => {
           console.log('POST Request is successful ', data);
+          this.response.posts.splice(index, 1);
         },
         error  => {
 
@@ -38,7 +44,6 @@ export class PostListComponent implements OnInit {
           console.log(post);
           console.log(index);
           console.log(this.response);
-          this.response.filter(post, index);
         });
    window.alert('The post will be deleted!.');
   }

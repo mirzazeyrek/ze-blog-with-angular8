@@ -1,20 +1,15 @@
 <div class="list-group">
     <h1> Blog Posts </h1>
-    <div class="list-group-item" *ngFor="let post of (response | async)?.posts; index as postId">
-      <h3>
-        <a [title]="post.title + ' details '" [routerLink]="['/post', post.id]">
-          {{ post.title }}
-        </a>
-      </h3>
-      <button (click)="edit(post)" class="mrgn2px">
-        Edit
-      </button>
-      <button (click)="delete(post, postId)" class="mrgn2px button-red">
-        Delete
-      </button>
-      <br />
+    <div class="list-group-item" *ngFor="let post of (postService.posts)?.posts; index as postId">
+      <app-post
+        [post]="post"
+        (confirm)="delete(post, postId)">
+      </app-post>
     </div>
-  <button (click)="create()" class="mrgn2px width20per mrgntop5px">
+  <div class="list-group-item" *ngIf="(postService.posts)?.posts.length==0">
+    No posts available.
+  </div>
+  <button [routerLink]="['/post/create']" class="mrgn2px width20per mrgntop5px">
     Create New Post
   </button>
 </div>

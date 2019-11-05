@@ -2,7 +2,8 @@
   <h1>Check24 Das Vergleichsportal Blogungen</h1>
 </a>
 
-<a [routerLink]="['/cart']" class="button fancy-button"><i class="material-icons">search</i>Search</a>
+<input placeholder="Search" name="search" id="search" [(ngModel)]="searchValue">
+<button (click)="search(searchValue);" [routerLink]="['/']" class="button fancy-button" type="submit"><i class="material-icons">search</i>search</button>
 
 <!--
 Copyright Google LLC. All Rights Reserved.

@@ -49,9 +49,9 @@ class ApiPostDeleteHandler implements RequestHandlerInterface
             return new RedirectResponse('/post');
         }
 
-     //   $this->entityManager->remove($post);
-       // $this->entityManager->flush();
+        $this->entityManager->remove($post);
+        $this->entityManager->flush();
 
-        return new EmptyResponse(304);
+        return new EmptyResponse(200);
     }
 }

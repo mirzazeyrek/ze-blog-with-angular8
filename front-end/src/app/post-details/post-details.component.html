@@ -1,3 +1,6 @@
-<p>
-  post-details works!
-</p>
+<h2>Post Details</h2>
+<div *ngIf="(post | async)?.post as postReceived; index as postId">
+  <h3> {{ postReceived.title }} </h3>
+  <p> {{ postReceived.text }} </p>
+  <button (click)="share(postReceived.id)">Share</button>
+</div>

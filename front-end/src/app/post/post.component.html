@@ -1,0 +1,17 @@
+<h3>
+  <a [title]="post.title + ' details '" [routerLink]="['/post', post.id]">
+    {{ post.title }}
+  </a>
+</h3>
+<button [routerLink]="['/post/edit/' + post.id]" class="mrgn2px">
+  Edit
+</button>
+<button (click)="confirmDelete=true" class="mrgn2px button-red">
+  Delete
+</button>
+<br />
+<span *ngIf="confirmDelete" class="mrgn2px mrgntop5px">
+        <span>Are you sure you want to Delete?</span>
+        <button class="btn btn-danger mrgn2px" (click)="confirm.emit()">Yes</button>
+        <button class="btn btn-primary mrgn2px" (click)="confirmDelete=false">No</button>
+</span>

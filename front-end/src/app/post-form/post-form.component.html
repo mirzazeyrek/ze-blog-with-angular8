@@ -1,0 +1,27 @@
+
+<form [formGroup]="postForm" (ngSubmit)="onSubmit(postForm.value)" class="form-group">
+
+  <input id="id" type="hidden" formControlName="id" value="">
+
+  <div>
+    <label for="title">
+      Title
+    </label>
+    <input id="title"  class="form-control" type="text" formControlName="title">
+  </div>
+
+  <div>
+    <label for="text">
+      Text
+    </label>
+    <textarea id="text" class="form-control" name="text" rows="10" cols="30" formControlName="text"></textarea>
+  </div>
+
+  <button class="button" type="submit">Submit</button>
+
+</form>
+
+<p>
+  {{ status }}
+</p>
+
