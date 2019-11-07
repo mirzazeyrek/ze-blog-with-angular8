@@ -1,12 +1,12 @@
 <div class="list-group">
     <h1> Blog Posts </h1>
-    <div class="list-group-item" *ngFor="let post of (postService.posts)?.posts; index as postId">
+    <div class="list-group-item" *ngFor="let post of (postService.posts); index as postId">
       <app-post
         [post]="post"
         (confirm)="delete(post, postId)">
       </app-post>
     </div>
-  <div class="list-group-item" *ngIf="(postService.posts)?.posts.length==0">
+  <div class="list-group-item" *ngIf="(postService.posts).length==0">
     No posts available.
   </div>
   <button [routerLink]="['/post/create']" class="mrgn2px width20per mrgntop5px">

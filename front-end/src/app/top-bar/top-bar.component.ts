@@ -7,19 +7,16 @@ import { Router } from '@angular/router';
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css']
 })
-export class TopBarComponent implements OnInit {
-  searchValue: any;
+export class TopBarComponent {
 
   constructor(
     private router: Router,
     private postService: PostService
   ) {}
 
-  ngOnInit() {
-  }
-
-  search(searchValue: any) {
+  public search(searchValue: string = '') {
     this.postService.getPosts(searchValue);
+    this.router.navigate(['/']);
   }
 }
 

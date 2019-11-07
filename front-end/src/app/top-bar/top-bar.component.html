@@ -2,7 +2,7 @@
   <h1>Check24 Das Vergleichsportal Blogungen</h1>
 </a>
 
-<input placeholder="Search" name="search" id="search" [(ngModel)]="searchValue">
+<input (keyup.enter)="search(searchValue);" [routerLink]="['/']" placeholder="Search" name="searchInput" id="searchInput" [(ngModel)]="searchValue">
 <button (click)="search(searchValue);" [routerLink]="['/']" class="button fancy-button" type="submit"><i class="material-icons">search</i>search</button>
 
 <!--

@@ -1,36 +1,28 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Post} from '../post';
+import {Post, PostListResponse} from '../post';
 import {Router} from '@angular/router';
+import {Observable, Subscription} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  posts;
+  public posts: Post[] = [];
 
   constructor(
     private http: HttpClient,
     private router: Router,
   ) { }
 
-  clearPosts() {
-    this.posts = '';
-    return this.posts;
-  }
-
-  fetchPosts() {
-    return this.http.get('api/post/list');
-  }
-
-  getPosts(search = '') {
-    return this.http.get<Post[]>('/api/post/list/' + search)
+  public getPosts(search: string = ''): Subscription {
+    return this.http
+      .get('/api/post/list/' + search)
       .subscribe(
-        data => {
-          this.posts = data;
+        (data: PostListResponse) => {
+          this.posts = data.posts;
           console.log(data);
-          this.router.navigate(['/']);
         }
       );
   }

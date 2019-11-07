@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {CartService} from '../cart.service';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+import {Post, PostResponse} from '../../post';
 
 @Component({
   selector: 'app-post-form',
@@ -11,8 +12,8 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./post-form.component.css']
 })
 export class PostFormComponent implements OnInit {
-  postForm;
-  status;
+  public postForm;
+  public status;
 
   constructor(
     private cartService: CartService,
@@ -32,29 +33,31 @@ export class PostFormComponent implements OnInit {
     this.getPostDetails();
   }
 
-  getPostDetails() {
+  public getPostDetails(): void {
     this.route.paramMap.subscribe(params => {
-      if (params.get('postId')) {
+      if (!params.get('postId')) {
+        return;
+      }
+
       this.http.get('api/post/detail/' + params.get('postId') ).subscribe(
-        (data: any) => {
+        (data: PostResponse) => {
           this.postForm = this.formBuilder.group(data.post);
         }
       );
-      }
     });
   }
 
-  onSubmit(postData) {
+  public onSubmit(postData: Post): void {
     this.postForm.reset();
     this.status = 'Sent! Thx baby.';
-    const formData = new FormData(); 
-    formData.append('id', postData.id);
+    const formData = new FormData();
+    formData.append('id', '' + postData.id);
     formData.append('title', postData.title);
     formData.append('text', postData.text);
     this.http.post('api/post/create', formData).subscribe(
-      (data: any ) => {
-        this.router.navigate(['post/' + data.post.id ]);
+      (data: Post ) => {
+        this.router.navigate(['post/' + data.id ]);
       });
-    console.warn('Your post has been submitted 2 ', postData);
+    console.warn('Your post has been submitted.', postData);
   }
 }
